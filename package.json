@@ -10,7 +10,6 @@
   },
   "devDependencies": {
     "@types/jest": "^23.3.2",
-    "@types/object-assign": "^4.0.30",
     "jest": "^23.5.0",
     "rollup": "^0.65.2",
     "rollup-plugin-commonjs": "^9.1.6",
@@ -33,7 +32,6 @@
     ]
   },
   "dependencies": {
-    "immutability-helper": "^2.7.1",
-    "object-assign": "^4.1.1"
+    "immutability-helper": "^2.7.1"
   }
 }

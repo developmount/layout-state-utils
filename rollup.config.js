@@ -11,7 +11,7 @@ export default [
       file: pkg.browser,
       format: 'umd',
     },
-    plugins: [commonjs(), typescript(), resolve()],
+    plugins: [typescript(), resolve(), commonjs()],
   },
   {
     input: 'src/index.ts',
@@ -20,6 +20,6 @@ export default [
       { file: pkg.main, format: 'cjs' },
       { file: pkg.module, format: 'es' },
     ],
-    plugins: [commonjs(), typescript()],
+    plugins: [typescript(), commonjs()],
   },
 ];
