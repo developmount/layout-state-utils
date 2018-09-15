@@ -6,16 +6,20 @@
   "browser": "dist/layout-state-utils.umd.js",
   "scripts": {
     "test": "jest",
-    "build": "rollup -c"
+    "build": "tsc && rollup -c"
+  },
+  "dependencies": {
+    "immutability-helper": "^2.7.1"
   },
   "devDependencies": {
+    "@types/immutability-helper": "^2.6.3",
     "@types/jest": "^23.3.2",
     "jest": "^23.5.0",
     "rollup": "^0.65.2",
     "rollup-plugin-commonjs": "^9.1.6",
     "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-typescript": "^0.8.1",
-    "ts-jest": "^23.1.4"
+    "ts-jest": "^23.1.4",
+    "typescript": "^3.0.3"
   },
   "jest": {
     "transform": {
@@ -30,8 +34,5 @@
       "json",
       "node"
     ]
-  },
-  "dependencies": {
-    "immutability-helper": "^2.7.1"
   }
 }

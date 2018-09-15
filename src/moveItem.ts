@@ -11,12 +11,13 @@ const moveItem = (
   key: string,
   parent?: ParentInput,
 ): LayoutState => {
-  const updater = {};
+  const updater: any = {};
   const item = layoutState[key];
   if (item.parent) {
     updater[item.parent] = {
       children: {
-        $apply: (children) => children.filter((childKey) => childKey !== key),
+        $apply: (children: string[]) =>
+          children.filter((childKey) => childKey !== key),
       },
     };
   }

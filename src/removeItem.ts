@@ -16,12 +16,13 @@ const getAncestorKeys = (
 
 const removeItem = (layoutState: LayoutState, key: string): LayoutState => {
   const ancestorKeys = getAncestorKeys(layoutState, key);
-  const updater = { $unset: [key, ...ancestorKeys] };
+  const updater: any = { $unset: [key, ...ancestorKeys] };
   const item = layoutState[key];
   if (item.parent) {
     updater[item.parent] = {
       children: {
-        $apply: (children) => children.filter((childKey) => childKey !== key),
+        $apply: (children: string[]) =>
+          children.filter((childKey) => childKey !== key),
       },
     };
   }
