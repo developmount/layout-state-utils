@@ -1,25 +1,25 @@
 {
   "name": "layout-state-utils",
   "version": "0.1.0",
+  "license": "MIT",
   "main": "dist/layout-state-utils.cjs.js",
   "module": "lib/index.js",
   "browser": "dist/layout-state-utils.umd.js",
   "scripts": {
     "test": "jest",
-    "build": "rimraf lib/ dist/ && tsc && rollup -c",
-    "prepublish": "yarn build"
+    "build": "rimraf lib/ dist/ && tsc && rollup -c config/rollup/rollup.config.js"
   },
   "dependencies": {
     "immutability-helper": "^2.7.1"
   },
   "devDependencies": {
-    "@types/immutability-helper": "^2.6.3",
     "@types/jest": "^23.3.2",
     "jest": "^23.5.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.65.2",
     "rollup-plugin-commonjs": "^9.1.6",
     "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
     "ts-jest": "^23.1.4",
     "typescript": "^3.0.3"
   },
