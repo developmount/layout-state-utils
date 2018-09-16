@@ -25,8 +25,3 @@ export interface LayoutItem extends LayoutItemBase {
 export interface LayoutState {
   [key: string]: LayoutItem;
 }
-
-export interface LayoutNode extends LayoutItemBase {
-  children: LayoutNode[];
-  parent?: LayoutNode;
-}

@@ -1,59 +1,107 @@
-# Typescript NPM Package Starter
+# Layout State Utils
 
-[![CircleCI](https://circleci.com/gh/gregchamberlain/ts-package-starter/tree/master.svg?style=svg)](https://circleci.com/gh/gregchamberlain/ts-package-starter/tree/master)
+[![CircleCI](https://circleci.com/gh/gregchamberlain/layout-state-utils/tree/master.svg?style=svg)](https://circleci.com/gh/gregchamberlain/layout-state-utils/tree/master)
 
-## Initial Setup
+## LayoutState
 
-```
-git clone https://github.com/gregchamberlain/ts-package-starter.git <your-package-name>
+A `LayoutState` is meant to be an immutable, serializable representation of a
+layout.
 
-cd <your-package-name>
+```ts
+interface LayoutItem {
+  key: string;
+  type: string;
+  props: {
+    [key: string]: any;
+  };
+  metadata: {
+    [key: string]: any;
+  };
+  children: string[];
+  parent?: string;
+}
 
-git remote remove origin
-```
-
-or to merge future updates to this package
-
-```
-git remote rename origin base
-```
-
-Replace all `ts-package-starter` in `package.json` with your package name.
-
-Update the LICENSE file accordingly.
-
-```
-yarn install
-```
-
-## Testing
-
-This project has testing setup through [Jest](https://jestjs.io/). Tests are
-located in the `__tests__` directory, and can be run with:
-
-```
-yarn test
+interface LayoutState {
+  [key: string]: LayoutItem;
+}
 ```
 
-## CircleCI
+## Utils
 
-This project comes with a [CircleCI](https://circleci.com/) workflow
-pre-configured to build, test, and publish your package to npm.
+All util functions that change a `LayoutState` will return a new `LayoutState`
+with the change, and not change the original.
 
-`Build` and `Test` jobs are run for every `git push` on every branch.
+### createKey
 
-The `Publish` job is only run when a new release it tagged (prefixed with a v).
+Creates a unique key that can be used to add an item to the `LayoutState`.
 
-### Setup
-
-In order for [CircleCI](https://circleci.com/) to be able to `publish` the
-package on your behalf, you need to create an environment variable `NPM_TOKEN`
-with your npm api token.
-
-You can get your npm api token by running:
-
+```ts
+const createKey: (layoutState: LayoutState) => string;
 ```
-npm login
 
-cat ~/.npmrc
+### addItem
+
+Adds a `LayoutItem` to the `LayoutState`.
+
+```ts
+const addItem: (layoutState: LayoutState, item: LayoutItem) => LayoutState;
+```
+
+### moveItem
+
+Moves a `LayoutItem` in the `LayoutState`. If a `parent` is not provided,
+the `LayoutItem` will remain in the `LayoutState`, but will not be referenced
+by any other `LayoutItem`s.
+
+```ts
+type ParentInput = {
+  key: string;
+  index: number;
+};
+
+const moveItem: (
+  layoutState: LayoutState,
+  key: string,
+  parent?: ParentInput,
+) => LayoutState;
+```
+
+### removeItem
+
+Removes a `LayoutItem` and all of its descendants from the `LayoutState`.
+
+```ts
+const removeItem: (layoutState: LayoutState, key: string) => LayoutState;
+```
+
+### updateProps
+
+Updates a `LayoutItem`'s props in the `LayoutState`.
+
+`updateFn` must return a new `ItemProps` and not mutate the original.
+
+```ts
+type PropUpdater = (ItemProps) => ItemProps;
+
+const updateProps: (
+  layoutState: LayoutState,
+  key: string,
+  updateFn: PropUpdater,
+) => LayoutState;
+```
+
+### updateMetadata
+
+Updates a `LayoutItem`'s metadata in the `LayoutState`.
+
+`updateFn` must return a new `ItemMetadata` and not mutate the original.
+
+```ts
+type MetadataUpdater = (ItemMetadata) => ItemMetadata;
+
+const updateMetadata: (
+  layoutState: LayoutState,
+  key: string,
+  updateFn: MetadataUpdater,
+) => LayoutState;
 ```
