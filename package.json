@@ -5,6 +5,15 @@
   "main": "dist/layout-state-utils.cjs.js",
   "module": "lib/index.js",
   "browser": "dist/layout-state-utils.umd.js",
+  "typings": "lib/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/gregchamberlain/layout-state-utils/issues"
+  },
+  "homepage": "https://github.com/gregchamberlain/layout-state-utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gregchamberlain/layout-state-utils.git"
+  },
   "scripts": {
     "test": "jest",
     "build": "rimraf lib/ dist/ && tsc && rollup -c config/rollup/rollup.config.js"
