@@ -17,19 +17,6 @@ export interface ItemMetadata {
   [key: string]: any;
 }
 
-export interface LayoutItemInput {
-  key: string;
-  type: string;
-  props?: {
-    [key: string]: any;
-  };
-  metadata?: {
-    [key: string]: any;
-  };
-  children?: string[];
-  parent?: string;
-}
-
 export interface LayoutItem extends LayoutItemBase {
   children: string[];
   parent?: string;

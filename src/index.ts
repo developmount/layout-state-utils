@@ -4,6 +4,7 @@ import createKey from './createKey';
 import moveItem from './moveItem';
 import removeItem from './removeItem';
 import { updateProps, updateMetadata } from './updateItem';
+export * from './types';
 
 export {
   addItem,

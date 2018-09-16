@@ -1,18 +1,5 @@
 import { LayoutItem } from './types';
 
-interface LayoutItemInput {
-  key: string;
-  type: string;
-  props?: {
-    [key: string]: any;
-  };
-  metadata?: {
-    [key: string]: any;
-  };
-  children?: string[];
-  parent?: string;
-}
-
 const createItem = ({
   key,
   type,
@@ -20,7 +7,7 @@ const createItem = ({
   metadata = {},
   children = [],
   parent,
-}: LayoutItemInput): LayoutItem => {
+}: LayoutItem): LayoutItem => {
   return { key, type, props, metadata, children, parent };
 };
 
