@@ -8,15 +8,19 @@ A `LayoutState` is meant to be an immutable, serializable representation of a
 layout.
 
 ```ts
+interface ItemProps {
+  [key: string]: any;
+}
+
+interface ItemMetadata {
+  [key: string]: any;
+}
+
 interface LayoutItem {
   key: string;
   type: string;
-  props: {
-    [key: string]: any;
-  };
-  metadata: {
-    [key: string]: any;
-  };
+  props: ItemProps;
+  metadata: ItemMetadata;
   children: string[];
   parent?: string;
 }
@@ -44,7 +48,16 @@ const createKey: (layoutState: LayoutState) => string;
 Adds a `LayoutItem` to the `LayoutState`.
 
 ```ts
-const addItem: (layoutState: LayoutState, item: LayoutItem) => LayoutState;
+interface LayoutItemInput {
+  key: string;
+  type: string;
+  props?: ItemProps;
+  metadata?: ItemMetadata;
+  children?: string[];
+  parent?: string;
+}
+
+const addItem: (layoutState: LayoutState, item: LayoutItemInput) => LayoutState;
 ```
 
 ### moveItem
