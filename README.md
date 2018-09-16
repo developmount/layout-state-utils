@@ -1,5 +1,6 @@
 # Layout State Utils
 
+![npm](https://img.shields.io/npm/v/layout-state-utils.svg?style=flat-square)
 [![CircleCI](https://circleci.com/gh/gregchamberlain/layout-state-utils/tree/master.svg?style=svg)](https://circleci.com/gh/gregchamberlain/layout-state-utils/tree/master)
 
 ## LayoutState
