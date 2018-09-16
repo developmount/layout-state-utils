@@ -1,5 +1,5 @@
 import update from 'immutability-helper';
-import { LayoutState, LayoutItem } from './types';
+import { LayoutState, LayoutItem, LayoutItemInput } from './types';
 
 const defaultItem: LayoutItem = {
   key: '',
@@ -9,7 +9,10 @@ const defaultItem: LayoutItem = {
   children: [],
 };
 
-const addItem = (layoutState: LayoutState, item: LayoutItem): LayoutState => {
+const addItem = (
+  layoutState: LayoutState,
+  item: LayoutItemInput,
+): LayoutState => {
   const nextItem = update(defaultItem, { $merge: item });
   return update(layoutState, { [item.key]: { $set: nextItem } });
 };
