@@ -1,7 +1,9 @@
 import update from 'immutability-helper';
-import { LayoutState, LayoutItemInput } from './types';
+import { LayoutState, LayoutItemInput, LayoutItem } from './types';
 
-const defaultItem = {
+const defaultItem: LayoutItem = {
+  key: '',
+  type: '',
   props: {},
   metadata: {},
   children: [],
